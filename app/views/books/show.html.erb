@@ -1,0 +1,63 @@
+<center>
+  <%= link_to 'Back', books_path %> |
+  <%= link_to 'Edit Book', edit_book_path(@book) %> |
+  <%= link_to "List Chapters", book_chapters_path(@book) %> 
+</center>
+<br><br>
+
+<div id="flipbook">
+    <div class="hard"> 
+      <% if @book.cover_photo.present? %>
+        <center><span><%= image_tag(@book.cover_photo.url)%></span></center>
+      <% else %>        
+        <center>
+          <span> Author : <%= @book.title %> </br> </span>
+          <span> Author : <%= @book.author %> </br> </span>
+        </center>
+      <% end %>
+    </div> 
+    <div class="hard"></div>
+    <div>
+      <center>
+      <h4>Index</h4>
+      <table border="1" style="width:95%;">
+        <tr>
+            <td>Sr.No</td>
+            <td>Chapter Name</td>
+            <td>To</td>
+            <td>From</td>
+        </tr>
+        <% @book.chapters.each_with_index do |chapter,index| %>
+          <tr>
+              <td><%= index + 1 %></td>
+              <td><%= chapter.name %></td>
+              <td><%= chapter.chapter_start %></td>
+              <td><%= chapter.chapter_end %></td>
+          </tr>
+        <% end %>
+      </table>
+    </center>
+    </div>
+    <% @book.chapters.each do |chapter| %>
+      <% chapter.pages.each do |page| %>
+        <div style="padding:1px;">
+          <span style="padding:5px;"><%= page.content.html_safe %> </span>
+        </div>
+      <% end %>
+    <% end %>
+    <% unless @book.is_even? %>
+       <div>&nbsp;</div>
+    <% end %>
+    <div class="hard"></div>
+    <div class="hard"></div>
+</div>
+
+
+<script>
+$("#flipbook").turn({
+    width: 900,
+    height: 550,
+});
+
+</script>
+

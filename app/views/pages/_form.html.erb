@@ -1,0 +1,21 @@
+<%= form_for [@book, @chapter, @page] do |f| %>
+  <% if @page.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@page.errors.count, "error") %> prohibited this page from being saved:</h2>
+      <ul>
+      <% @page.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :content, "Write page content below" %><br />
+    <%= f.cktext_area :content, :class => "page_content_ckeditor" %>
+  </div>
+</br>
+  <div class="actions">
+    <%= f.submit "Submit", :class => "btn btn-custom" %>
+  </div>
+<% end %>

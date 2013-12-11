@@ -1,0 +1,25 @@
+<h3>List of <%= @book.name %>'s Chapters</h3>
+
+<table class="table table-striped">
+  <tr>
+    <th>Name</th>
+    <th>Chapter no</th>
+    <th></th>
+    <th colspan="3">Actions</th>
+  </tr>
+
+<% @chapters.each do |chapter| %>
+  <tr>
+    <td><%= chapter.name %></td>
+    <td><%= chapter.chapter_no %></td>
+    <td><%= link_to 'Show', book_chapter_path(chapter.book,chapter) %></td>
+    <td><%= link_to 'Edit', edit_book_chapter_path(chapter.book,chapter) %></td>
+    <td><%= link_to 'Destroy', book_chapter_path(chapter.book,chapter), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to "Add New Chapter", new_book_chapter_path(@book) %> |
+<%= link_to "Go to List of Books", books_path %>

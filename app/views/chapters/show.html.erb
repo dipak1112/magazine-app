@@ -1,0 +1,17 @@
+<p>
+  <b>Name:</b>
+  <%= @chapter.name %>
+</p>
+
+<p>
+  <b>Chapter no:</b>
+  <%= @chapter.chapter_no %>
+</p>
+
+
+<%= link_to 'Edit Chapter', edit_book_chapter_path(@chapter.book, @chapter) %> |
+<%= link_to 'Back', book_chapters_path(@chapter.book) %> |
+<%= link_to 'Add Page', new_book_chapter_page_path(@chapter.book, @chapter) %> |
+<%= link_to 'List of Pages', book_chapter_pages_path(@chapter.book,@chapter) %> 
+
+

@@ -1,0 +1,11 @@
+<div>
+  <p> <b>Content:</b> <%= @page.content.html_safe %></p>
+</div>
+<div>
+  <%= link_to 'Edit', edit_book_chapter_page_path(@book,@page.chapter, @page) %> |
+  <%= link_to 'List of Books', books_path %> |
+  <%= link_to 'List of Chapters', book_chapters_path(@book) %> |
+  <%= link_to 'Show Chapter', book_chapter_path(@book,@chapter) %> |
+  <%= link_to 'Back', book_chapter_pages_path(@book,@chapter,@page) %> 
+
+</div>
